@@ -9,6 +9,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.coufie.challengechapterfive.adapter.FilmAdapter
+import com.coufie.challengechapterfive.detail_page.DetailFilm
 import com.coufie.challengechapterfive.detail_page.DetailUser
 import com.coufie.challengechapterfive.viewmodel.FilmViewModel
 import kotlinx.android.synthetic.main.activity_home.*
@@ -27,18 +28,30 @@ class HomeActivity : AppCompatActivity() {
         var username = prefs.getString("EMAIL", "")
 
         welcome.setText("Welcome, $username")
+
+        initRecycler()
         getDataFilm()
-        adapterfilm = FilmAdapter(){}
-
-        rv_film.layoutManager = LinearLayoutManager(this)
-        rv_film.adapter = adapterfilm
-
 
         iv_profile.setOnClickListener {
             startActivity(Intent(this@HomeActivity, DetailUser::class.java))
         }
 
     }
+
+    fun initRecycler(){
+
+        adapterfilm = FilmAdapter(){
+            val pindah = Intent(this, DetailFilm::class.java)
+            pindah.putExtra("DETAILFILM", it)
+            startActivity(pindah)
+        }
+
+        rv_film.layoutManager = LinearLayoutManager(this)
+        rv_film.adapter = adapterfilm
+
+
+    }
+
 
     fun getDataFilm(){
         val viewModel = ViewModelProvider(this).get(FilmViewModel::class.java)

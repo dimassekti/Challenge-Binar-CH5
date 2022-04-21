@@ -13,7 +13,7 @@ class DetailFilm : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail_film)
 
-        val detailFilm = intent.getParcelableExtra<GetFilmDataItem>("CEK")
+        val detailFilm = intent.getParcelableExtra<GetFilmDataItem>("DETAILFILM")
 
         tv_film_director.text = detailFilm!!.director
         tv_film_release_date.text = detailFilm!!.createdAt
