@@ -10,9 +10,7 @@ interface ApiService {
     fun getAllFilm() : Call<List<GetFilmDataItem>>
 
     @GET("apiuser.php")
-    fun getUser(
-        @Path ("id") id : String
-    ) : Call<List<GetUserDataItem>>
+    fun getAllUser() : Call<List<GetUserDataItem>>
 
     @POST("register.php/")
     @FormUrlEncoded
@@ -39,6 +37,12 @@ interface ApiService {
         @Field("username") username : String
 
     ) : Call<ResponseUserUpdate>
+
+    @POST("detailuser.php")
+    @FormUrlEncoded
+    fun getDetailUsers(
+        @Field("id") id : String
+    ) : Call<List<GetDetailUser>>
 
 
 }

@@ -23,18 +23,18 @@ class RegisterActivity : AppCompatActivity() {
     fun register(){
         btn_register.setOnClickListener {
 
-            if(et_register_email.text.isEmpty() && et_register_password.text.isEmpty() && et_register_username.text.isEmpty()){
-                if(et_register_password.text == et_confirm_password.text){
-                    Toast.makeText(this@RegisterActivity, "Data belum lengkap", Toast.LENGTH_SHORT).show()
-                }else{
-                    Toast.makeText(this@RegisterActivity, "Password tidak sama", Toast.LENGTH_SHORT).show()
-                }
+            if(et_register_email.text.isEmpty() || et_register_password.text.isEmpty() || et_register_username.text.isEmpty()){
+                Toast.makeText(this@RegisterActivity, "Data belum lengkap", Toast.LENGTH_SHORT).show()
             }else{
-                val email = et_register_email.text.toString()
-                val password = et_register_password.text.toString()
-                val username = et_register_username.text.toString()
+                if(et_register_password.text.toString() != et_confirm_password.text.toString()){
+                    Toast.makeText(this@RegisterActivity, "Password tidak samaa", Toast.LENGTH_SHORT).show()
+                }else{
+                    val email = et_register_email.text.toString()
+                    val password = et_register_password.text.toString()
+                    val username = et_register_username.text.toString()
 
-                postUserRegister(email, password, username)
+                    postUserRegister(email, password, username)
+                }
             }
 
         }

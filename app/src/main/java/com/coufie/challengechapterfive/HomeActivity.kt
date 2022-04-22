@@ -25,7 +25,7 @@ class HomeActivity : AppCompatActivity() {
 
         prefs = this.getSharedPreferences("SF", Context.MODE_PRIVATE)
 
-        var username = prefs.getString("EMAIL", "")
+        var username = prefs.getString("USERNAME", "")
 
         welcome.setText("Welcome, $username")
 
@@ -66,8 +66,10 @@ class HomeActivity : AppCompatActivity() {
 
     override fun onStart() {
         super.onStart()
-
+        prefs = this.getSharedPreferences("SF", Context.MODE_PRIVATE)
+        var username = prefs.getString("USERNAME", "")
         getDataFilm()
+
     }
 
 }
