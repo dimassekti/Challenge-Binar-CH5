@@ -7,9 +7,9 @@ import kotlinx.android.parcel.Parcelize
 @Parcelize
 data class ResponseUserLogin (
 
-    @SerializedName("email")
-    val description: String,
+    @SerializedName("user")
+    val user: String,
     @SerializedName("password")
-    val director: String
+    val password: String
 
 ) : Parcelable

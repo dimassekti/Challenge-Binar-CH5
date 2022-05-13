@@ -7,9 +7,9 @@ import kotlinx.android.parcel.Parcelize
 @Parcelize
 data class ResponseUserRegister (
     @SerializedName("email")
-    val description: String,
+    val email: String,
     @SerializedName("password")
-    val director: String,
+    val password: String,
     @SerializedName("username")
     val username: String
 
